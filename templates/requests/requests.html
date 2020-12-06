@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block menu-class %}
+    <div class="animation start-requests"></div>
+{% endblock %}
+
+{% block content %}
+    <div class="form">
+        {% for error in form.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    
+        <form action="" method="post">
+           {% csrf_token %}
+           <h2>Submit New Get Request</h2>
+           <h4>URL</h4>
+           <div class="form-input">{{ form.url }}</div>
+           <h4>Request Date and Time</h4>
+           <div class="form-input">{{ form.req_date }}</div>
+           <button>Submit</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .form {
+        width: 35%;
+        margin: auto;
+        margin-top: 50px;
+        border: 4px solid;
+        padding: 10px;
+        background: white;
+    }
+
+    .form-input {
+        width: 100%;
+        border-radius: 2px;
+    }
+
+    h4 {
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    button {
+        width: 100px;
+        height: 30px;
+        margin: 20px 0 10px 0;
+    }
+</style>
+{% endblock %}
+
+{% block script %}
+    <script> 
+        flatpickr("#id_req_date", {
+            enableTime: true,
+            dateFormat: "d-m-Y H:i"
+        });
+    </script>
+{% endblock %}

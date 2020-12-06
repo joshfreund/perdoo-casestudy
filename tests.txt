@@ -1,0 +1,15 @@
+Due to being short on time, here is a short writeup of the testing suite I would use:
+
+Given the small size of the application, it would be relatively simple to write
+test modules for each function and class. These should include checks for edge cases,
+such as empty fields, long inputs, and different character types. Generally, I would
+keep tests files app-specific and have a main tests file to run each supporting file
+(in the Django spirit of modularization).
+
+In addition to unit testing, I usually work with code reviews/pair programming to
+avoid errors that a single developer might overlook. Historically, this has
+happened in pull requests to version control. 
+
+Lastly, I would test the full app as a user, following standard user flows that cover
+the widest functionality/code possible. This last step ensures that test cases weren't
+missed or incorrectly configured.

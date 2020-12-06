@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block menu-class %}
+    <div class="animation start-history"></div>
+{% endblock %}
+
+{% block content %}
+<h2>UNPROCESSED REQUESTS</h2>
+<table>
+    <tr>
+        <th>Date to be Processed</th>
+        <th>URL</th>
+    </tr>
+{% for item in unprocessed %}
+    <tr>
+        <td>{{ item.req_date }}</td>
+        <td>{{ item.url }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h2>PROCESSED REQUESTS</h2>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>URL</th>
+        <th>Response</th>
+    </tr>
+{% for item in processed %}
+    <tr>
+        <td>{{ item.req_date }}</td>
+        <td>{{ item.url }}</td>
+        <td>{{ item.response }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<h4>You may need to refresh the page to see changes.</h4>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block style %}
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 80%;
+      margin: auto;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+        background-color: grey;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #d3d3d3;
+    }
+
+    h2, h4 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    h4 {
+        margin-bottom: 50px;
+    }
+</style>
+{% endblock %}
